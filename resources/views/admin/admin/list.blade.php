@@ -18,7 +18,36 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-
+        <div class="content">
+            <div class="container-fluid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Search Admin</h3>
+                    </div>
+                    <form action="" method="get">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" name="name"
+                                        value="{{ Request::get('name') }}" placeholder="search by name">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" name="email"
+                                        value="{{ Request::get('email') }}" placeholder="search by email">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <input type="date" class="form-control" name="date"
+                                        value="{{ Request::get('date') }}" placeholder="search by date added">
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <button class="btn btn-primary" type="submit"> Search </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -49,7 +78,7 @@
                                                 <td>{{ ++$i }}</td>
                                                 <td>{{ $value->name }}</td>
                                                 <td>{{ $value->email }}</td>
-                                                <td>{{ $value->created_at }}</td>
+                                                <td>{{ date('F j, Y | H:i A', strtotime($value->created_at)) }}</td>
                                                 <td>
                                                     <a href="{{ url('admin/admin/edit/' . $value->id) }}"
                                                         class="btn btn-primary"> Edit</a>
